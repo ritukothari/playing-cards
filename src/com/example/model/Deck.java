@@ -32,11 +32,10 @@ public class Deck {
         ArrayList<Card> shuffledDeck = new ArrayList<>();
         for(int i=0; i<deckSize; i++){
             int index = rand.nextInt(deckSize-i);
-            //swap last card in deck with random picked card
+            //copy last card in deck with random picked card
             Card randomCardIndex = deck.get(index);
             Card lastCard = deck.get(deckSize-1-i);
             deck.set(index, lastCard);
-            deck.set(deckSize-i-1, randomCardIndex);
             //remove last card in deck
             deck.remove(deckSize-i-1);
             //add random picked card in new deck
@@ -54,7 +53,7 @@ public class Deck {
     public String toString() {
         String deckOutput = "";
          deck.forEach(card->{
-             String.format("%s%s%s%s", deckOutput, card.toString(),"\n");
+             String.format("%s%s", deckOutput, card.toString());
          });
          return deckOutput;
     }
