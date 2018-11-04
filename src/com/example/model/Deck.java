@@ -29,19 +29,14 @@ public class Deck {
     public void shuffle(ArrayList<Card>  deck){
         final int deckSize = deck.size();
         Random rand = new Random();
-        ArrayList<Card> shuffledDeck = new ArrayList<>();
         for(int i=0; i<deckSize; i++){
             int index = rand.nextInt(deckSize-i);
             //copy last card in deck with random picked card
             Card randomCardIndex = deck.get(index);
             Card lastCard = deck.get(deckSize-1-i);
             deck.set(index, lastCard);
-            //remove last card in deck
-            deck.remove(deckSize-i-1);
-            //add random picked card in new deck
-            shuffledDeck.add(randomCardIndex);
+            deck.set(deckSize-1-i, randomCardIndex);
         }
-        this.deck = shuffledDeck;
     }
 
     public Optional<Card> dealOneCard(){
